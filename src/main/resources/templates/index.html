@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="theme-switch-wrapper">
+    <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider">
+            <i id="theme-icon" class="fas fa-moon"></i>
+        </span>
+    </label>
+</div>
+
+<h1><a href="/" class="home-link">Task Tracker</a></h1>
+
+<div class="top-bar">
+    <div class="search-wrapper">
+        <form th:action="@{/search}" method="get" class="search-form">
+            <input type="text" name="keyword" placeholder="Task search..." required>
+            <button type="submit" class="button"><i class="fas fa-search"></i> Search</button>
+        </form>
+        <a th:href="@{/add}" class="button">Add task</a>
+    </div>
+</div>
+
+<div class="task-list-wrapper">
+    <div class="task-list">
+        <div class="task" th:each="task : ${tasks}">
+            <h3 th:text="${task.title}">Task name</h3>
+            <p th:text="${task.description}">Task description</p>
+
+            <div class="task-actions">
+                <form th:action="@{'/toggle/' + ${task.id}}" method="post">
+                    <button type="submit" class="button" th:text="${task.done} ? '✓ Done' : '✗ Not done'"></button>
+                </form>
+
+                <a th:href="@{'/edit/' + ${task.id}}" class="button"><i class="fas fa-edit"></i> Edit</a>
+
+                <form th:action="@{'/delete/' + ${task.id}}" method="post" class="delete-form">
+                    <button type="submit" class="button">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

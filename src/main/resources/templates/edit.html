@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit task</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="theme-switch-wrapper">
+    <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider">
+            <i id="theme-icon" class="fas fa-moon"></i>
+        </span>
+    </label>
+</div>
+
+<h1><a href="/" class="home-link">Task editing</a></h1>
+
+<div class="task-list-wrapper">
+    <form th:action="@{'/edit/' + ${task.id}}" method="post" class="task-form">
+        <label for="title">Task name</label>
+        <input type="text" id="title" name="title" th:value="${task.title}" required>
+
+        <label for="description">Task description</label>
+        <textarea id="description" name="description" rows="4" th:text="${task.description}"></textarea>
+
+        <button type="submit" class="button"><i class="fas fa-check"></i> Update</button>
+    </form>
+</div>
+
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>
