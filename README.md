@@ -51,8 +51,8 @@ src/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/task-tracker.git
-   cd task-tracker
+   git clone https://github.com/redeesqa/task-tracker-springboot.git
+   cd task-tracker-springboot
    ```
 
 2. Run the application:
