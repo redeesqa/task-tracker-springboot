@@ -33,6 +33,7 @@ src/
 │   ├── java/com/denys/tasktracker/
 │   │   ├── Task.java
 │   │   ├── TaskController.java
+│   │   ├── TasktrackerApplication.java
 │   │   └── TaskRepository.java
 │   └── resources/
 │       ├── templates/
